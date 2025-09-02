@@ -98,9 +98,38 @@ h2 {
 
 .papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
 }
+
+.paper-detail {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: black;
+}
+
+.paper-detail a {
+  font-size: 18px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.paper-detail strong {
+  font-size: 18px;
+  color: black;
+}
+
+.paper-detail em {
+  font-size: 16px;
+  color: #555;
+  font-style: italic;
+}
+
+/* a:not([href]) {
+  color: black;
+  text-decoration: none;
+} */
 
 .name {
   padding-top: 20px;
