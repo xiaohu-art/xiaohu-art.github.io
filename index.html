@@ -24,6 +24,13 @@
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
+  <noscript>
+    <style>
+      .research.only-selected .paper:not(.is-selected) { display: flex; }
+      .pub-toggle { display: none; }
+    </style>
+  </noscript>
+
 </head>
 
 <body>
@@ -61,10 +68,48 @@
       </div>
     </header>
 
-    <section class="research">
-      <h2>Research</h2>
+    <section class="research only-selected">
+      <div class="research-head">
+        <h2>Research</h2>
+        <div class="pub-toggle" role="tablist" aria-label="Publication list">
+          <button type="button" role="tab" data-mode="selected" class="is-active" aria-selected="true">Selected</button>
+          <button type="button" role="tab" data-mode="all" aria-selected="false">All</button>
+        </div>
+      </div>
 
-      <article class="paper">
+      <article class="paper is-selected">
+        <div class="paper-media">
+          <img src="images/weave.jpg" alt="WEAVE — teaser figure">
+        </div>
+        <div class="paper-detail">
+          <a href="https://xiaohu-art.github.io/Weave/">
+            <span class="papertitle">WEAVE: Learning Whole-Body Dexterous Loco-Manipulation from Human–Object Interactions</span>
+          </a>
+          <br>
+          <strong>Liu Cao</strong>,
+          <a href="https://xingzewu24.github.io/">Xingze Wu</a>,
+          Jingzhi Cui,
+          <a href="https://btx0424.github.io/">Botian Xu</a>,
+          Mingzhi Pei,
+          <a href="https://gcfy63821.github.io/">Ruoqu Chen</a>,
+          <a href="https://mxu34.github.io/">Mengdi Xu</a>
+          <br>
+          <em>arXiv preprint</em>, 2026
+          <br>
+          <a href="https://xiaohu-art.github.io/Weave/">project page</a>
+          /
+          <a href="https://xiaohu-art.github.io/Weave/Weave.pdf">pdf</a>
+          /
+          <a href="https://github.com/xiaohu-art/Weave">code</a>
+          <p>
+            We present Weave, a framework for learning whole-body dexterous humanoid–object interaction from captured
+            human demonstrations. It reaches 92.5% success on trained interactions and 65.0% on unseen sequences,
+            and we release ~23&nbsp;hours of physically executed rollouts.
+          </p>
+        </div>
+      </article>
+
+      <article class="paper is-selected">
         <div class="paper-media">
           <video muted autoplay loop>
             <source src="images/humit.mp4" type="video/mp4">
@@ -92,6 +137,43 @@
             We present HuMiT, a whole-body teleoperation system that drives a humanoid from sparse human keypoints alone,
             achieving ~20&nbsp;ms communication-to-inference latency to enable reactive whole-body skills such as
             ball catching and loco-manipulation.
+          </p>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="paper-media">
+          <img src="images/dexx.jpg" alt="DEX-X — real-world deployment">
+        </div>
+        <div class="paper-detail">
+          <a href="https://dexx-code.github.io/dexx-code/">
+            <span class="papertitle">DEX-X: Learning Visual-Tactile Dexterous Manipulation From Human Videos with
+              Simulated Interaction
+            </span>
+          </a>
+          <br>
+          <a href="https://gcfy63821.github.io/">Ruoqu Chen</a>,
+          Feixiang Ruan,
+          <strong>Liu Cao</strong>,
+          Zihao Wang,
+          <a href="https://btx0424.github.io/">Botian Xu</a>,
+          Shiqin Tong,
+          <a href="https://jedward225.github.io/">Jiajun Liu</a>,
+          Mingzhi Pei,
+          Chenyu Zhang,
+          Wanli Xing,
+          Kaifeng Zhang,
+          <a href="https://mxu34.github.io/">Mengdi Xu</a>
+          <br>
+          <em>Conference on Robot Learning (CoRL)</em>, 2026
+          <br>
+          <a href="https://dexx-code.github.io/dexx-code/">project page</a>
+          /
+          <a href="https://arxiv.org/abs/2609.07747">arXiv</a>
+          <p>
+            DEX-X learns visual-tactile dexterous manipulation from monocular human videos by replaying them in
+            simulation to recover the missing contact signal. The distilled policies transfer zero-shot to a real
+            hand-arm platform, reaching 93% success on cube picking.
           </p>
         </div>
       </article>
@@ -239,6 +321,23 @@
     </footer>
 
   </main>
+
+  <script>
+    (function () {
+      var research = document.querySelector('.research');
+      var buttons = research.querySelectorAll('.pub-toggle button');
+      Array.prototype.forEach.call(buttons, function (btn) {
+        btn.addEventListener('click', function () {
+          research.classList.toggle('only-selected', btn.dataset.mode === 'selected');
+          Array.prototype.forEach.call(buttons, function (b) {
+            var on = b === btn;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>

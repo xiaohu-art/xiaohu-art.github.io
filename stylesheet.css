@@ -206,6 +206,47 @@ h2 {
   padding: 16px 0;
 }
 
+.research-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pub-toggle {
+  display: inline-flex;
+  border: 1px solid #c8ccd2;
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.pub-toggle button {
+  margin: 0;
+  padding: 4px 16px;
+  border: 0;
+  background: transparent;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1772d0;
+  cursor: pointer;
+}
+
+.pub-toggle button:hover {
+  color: #f09228;
+}
+
+.pub-toggle button.is-active {
+  background-color: #1772d0;
+  color: #fff;
+}
+
+.research.only-selected .paper:not(.is-selected) {
+  display: none;
+}
+
 .paper {
   display: flex;
   align-items: center;
